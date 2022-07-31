@@ -16,12 +16,12 @@ variable "resource_identifier" {
 }
 
 variable "public_subnets" {
-  type = list
+  type        = list(any)
   description = "List of CIDR blocks assigned to public subnets"
 }
 
 variable "availability_zone_cont" {
-  type = number
+  type        = number
   description = "Number of availability zone to setup"
-  default = 1
+  default     = 1
 }

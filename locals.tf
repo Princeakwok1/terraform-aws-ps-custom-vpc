@@ -4,7 +4,7 @@ locals {
   }
 
   azs = slice(data.aws_availability_zones.azs,
-  0,
-  var.availability_zone_cont
+    0,
+    var.availability_zone_cont
   )
 }
