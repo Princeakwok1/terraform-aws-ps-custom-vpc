@@ -20,3 +20,13 @@ resource "aws_route_table" "public_route_table" {
     Name = var.resource_identifier
   })
 }
+
+resource "aws_route" "public_route" {
+  route_table_id = aws_route_table.public_route_table
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id = aws_internet_gateway.internet_gateway
+
+  timeouts {
+    create = "5m"
+  }
+}
