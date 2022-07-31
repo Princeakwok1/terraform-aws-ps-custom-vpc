@@ -14,3 +14,14 @@ variable "resource_identifier" {
   description = "resource_identifier"
   default     = "default"
 }
+
+variable "public_subnets" {
+  type = list
+  description = "List of CIDR blocks assigned to public subnets"
+}
+
+variable "availability_zone_cont" {
+  type = number
+  description = "Number of availability zone to setup"
+  default = 1
+}

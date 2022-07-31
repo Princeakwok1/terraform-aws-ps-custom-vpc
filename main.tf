@@ -30,3 +30,19 @@ resource "aws_route" "public_route" {
     create = "5m"
   }
 }
+
+resource "aws_subnet" "public_subnet" {
+    for_each = toset(var.public_subnets)
+    cidr_block = each.key
+    vpc_id = aws_vpc.vpc.id
+    map_public_ip_on_launch = true
+    availability_zone = element(
+        local.azs,
+        index(var.public_subnets, each.key)
+    )
+    tags = merge(local.tags, {
+        Name = format("%s-public-%s",
+        var.resource_identifier,
+        index(var.public_subnets, each.key))
+    })
+}
